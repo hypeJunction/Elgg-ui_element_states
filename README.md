@@ -8,7 +8,7 @@ Element States for Elgg
 
 ## Usage
 
-### Create an anchor that changes it's state on click
+### Create an anchor that changes its state on click
 
 In the following example, the button is rendered based on the current friendship state between users.
 On each click, an action is performed via AJAX, and the state of the anchor is updated to the `after_state` on success.
@@ -78,10 +78,12 @@ echo "$counter friends";
 if (elgg_is_xhr()) {
 	echo json_encode([
 		'_states' => [
+			// Update friend counters
 			[
 				'selector' => ".friends-counter[data-guid=\"$friend->guid\"]",
 				'text' => $friend->getFriends(['count' => true]),
 			],
+			// Update unread messages count while at it
 			[
 				'selector' => '#messages-new',
 				'html' => elgg_format_element('span', [
